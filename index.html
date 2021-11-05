@@ -17,19 +17,27 @@
         {
             let response = await fetch(connString);
             let json = await response.json();
-            if (json != null){
-                for (var i = 0; i < json.length; i++) {
+            var sorted = json.sort((a,b) => {
+				return a.sells.unit_price - b.sells.unit_price;});
+			sorted = sorted.reverse();
+			
+			
+			
+			
+			if (json != null){
+                for (var i = 0; i < sorted.length; i++) {
                             let nextParagraph = document.createElement('p');
-                            e = json[i];
+                            e = sorted[i];
                             itemID = JSON.stringify(e.id);
                             itemPrice = JSON.stringify(e.sells.unit_price);
                             nextParagraph.innerHTML = "ID:" + itemID + "sells for:" + itemPrice;
-                            resultsList.appendChild(nextParagraph)
+                            resultsList.appendChild(nextParagraph);
                             
                 }
             }
         }
         getItems(GW2APIRequestString);
+		
         
         </script>
     
