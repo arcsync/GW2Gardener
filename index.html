@@ -20,11 +20,8 @@
             var sorted = json.sort((a,b) => {
 				return a.sells.unit_price - b.sells.unit_price;});
 			sorted = sorted.reverse();
-			
-			
-			
-			
-			if (json != null){
+					
+			if (sorted != null){
                 for (var i = 0; i < sorted.length; i++) {
                             let nextParagraph = document.createElement('p');
                             e = sorted[i];
